@@ -1,8 +1,10 @@
 # text-to-speach-sample
 
+- monaca-cli
+
 ```
 monaca login
-monaca upoload
+monaca upload
 ```
 
 あとはmonacaでandroidで実行するなり好きに
