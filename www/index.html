@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    </script>
+</head>
+<body>
+    This is a template for Monaca app.
+
+    <input id="ttstext" type="text" />
+    <br>
+    <button id="ja">ja</button>
+    <br>
+    <button id="en">en</button>
+    <br>
+    <button id="tts">TTS</button>
+</body>
+<script>
+var locale = 'en-US'
+document.addEventListener('deviceready', function () {
+    const jaButton = document.querySelector("#ja");
+    jaButton.addEventListener('click', event => locale = 'ja-JP');
+    const enButton = document.querySelector("#en");
+    enButton.addEventListener('click', event => locale = 'en-US');
+
+    const ttsButton = document.querySelector("#tts");
+    const ttsText = document.querySelector("#ttstext");
+    ttsButton.addEventListener('click', event => {
+      TTS.speak({
+          text: ttsText.value,
+          locale: locale,
+          rate: 0.75
+      }).then(function () {
+          alert('success');
+      }, function (reason) {
+          alert(reason);
+      });
+    });
+}, false);
+</script>
+</html>
